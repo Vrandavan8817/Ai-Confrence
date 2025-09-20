@@ -1,0 +1,93 @@
+/* Card wrapper */
+.theme-card {
+  position: relative;
+  overflow: hidden;                    /* crucial: prevents content from overflowing card box */
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  height: 350px;                       /* fixed card height so image covers consistently */
+  background: #000;
+  transition: box-shadow 0.25s ease;
+  display: block;
+}
+
+/* Full-cover image */
+.theme-card-img {
+  position: absolute;
+  inset: 0;                             /* top:0; right:0; bottom:0; left:0; */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;                    /* ensures full cover while preserving aspect ratio */
+  z-index: 0;
+}
+
+/* Bottom-anchored text area that expands up but is clipped by .theme-card overflow */
+.theme-card-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.25));
+  color: #fff;
+  /* collapsed height (only title + button visible) */
+  max-height: 120px;
+  transition: max-height 400ms ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* When .show is active, expand the body upward but still stay inside card */
+.theme-card.show .theme-card-body {
+  /* big enough to show list; still limited by .theme-card height due to overflow:hidden */
+  max-height: 300px;   /* tweak to allow how much expands — must be <= card height */
+}
+
+/* Darker background overlay when More Info is active */
+.theme-card.show .theme-card-body {
+  background: rgba(0, 0, 0, 0.75);  /* darker than default 0.4 */
+  transform: translateY(-40%);      /* keep your existing slide-up effect */
+}
+
+
+/* The list area scrolls internally if content is taller than the expanded body */
+.extra-info {
+  margin-top: 8px;
+  overflow-y: auto;
+  /* calc: make room for title and button (adjust 60px if your heading/button sizes differ) */
+  max-height: calc(100% - 72px);
+  /* smooth appearance */
+  opacity: 1;
+}
+
+/* list styling */
+.extra-info ul {
+  padding-left: 1.2rem;
+  margin: 0;
+  list-style-type: disc;
+}
+
+.extra-info li {
+  font-size: 0.95rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+/* More/Hide link */
+.more-link {
+  background: none;
+  border: none;
+  color: #fff;
+  text-decoration: underline;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  align-self: flex-start;
+  padding: 0;
+}
+
+/* small layout tweak */
+.themescard {
+  margin-left: 135px;
+}

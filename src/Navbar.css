@@ -1,0 +1,42 @@
+.navbar-clone {
+  width: 100%;
+  padding: 15px;
+  height: 80px;
+  display: flex;
+  background: rgba(0, 0, 0, 0.584);
+  justify-content: center;
+  position: fixed;
+  font-size: 15px;
+  color: #e5e5e5;
+  background-image: linear-gradient(180deg, rgba(0,0,0,0.7) 10%, transparent );
+  z-index: 10;
+  text-align: center;
+  top: 0;
+  left: 0;
+}
+
+
+.navbar{
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+
+
+.navbar ul{
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar ul li{
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1.08rem;
+}

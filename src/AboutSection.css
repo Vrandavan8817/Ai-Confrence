@@ -1,0 +1,11 @@
+.aboutSection{
+    background-color: white;
+    color: black;
+    padding: 3rem;
+    
+}
+.aboutSection h1{
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
