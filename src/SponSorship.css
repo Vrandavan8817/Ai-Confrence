@@ -1,12 +1,68 @@
-.sponsorship{
+.sponsorship {
+  /* Full screen background image */
+  background: url("/media/images/sponsorback.jpg") no-repeat center center/cover;
+  /* min-height: 100%; */
+  padding: 40px 20px;
+  position: relative;
   width: 100%;
-  height: 800px;
-  background-color: #f5f5f5;
-  border: 2px solid aqua;
+}
+
+.sponsorship::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 0;
+}
+
+.sponsorship h1,
+.sponsorship .card {
+  position: relative;
+  z-index: 1; /* keep text and card above overlay */
 }
 
 
-.sponCard1{
-  height: 350px;
-  width: 300px;
+
+.sponsorship {
+  /* padding: 40px 20px; */
+  background: #222;      /* example dark background */
+}
+
+.card-row {
+  display: flex;
+  justify-content: center;  /* center horizontally */
+  gap: 20px;                /* space between cards */
+  flex-wrap: nowrap;        /* keep all cards on one line */
+  overflow-x: auto;         /* allow scroll on very small screens */
+}
+
+.card {
+  flex: 0 0 auto;           /* don't shrink cards */
+}
+
+
+.btn.primary {
+  background: linear-gradient(90deg,#ff7a18,#ff4e50);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(255,122,24,0.18);
+  border: none;
+}
+
+.button-90 {
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 10px;
+  background-color: #4C43CD;
+  background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 87% at 26% 20%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: 2px 19px 31px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 16px;
+
+  border: 0;
+
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+  cursor: pointer;
 }

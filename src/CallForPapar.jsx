@@ -12,7 +12,7 @@ function CallForPapar() {
         aria-hidden="true"
       />
       {/* semi-opaque overlay for contrast */}
-      <div className="callforpaper-overlay" aria-hidden="true" />
+      {/* <div className="callforpaper-overlay" aria-hidden="true" /> */}
 
       {/* content */}
       <div className="callforpaper-content">
@@ -57,7 +57,7 @@ function CallForPapar() {
         </p>
 
         <div className="cfp-actions">
-          <a href="/submit-paper" className="btn primary">Submit Paper</a>
+          <a href="/submit-paper" className="button-90">Submit Paper</a>
           <a href="/downloads/CFP-ICAI-2026.pdf" className="btn outline" target="_blank" rel="noopener noreferrer">
             Download CFP (PDF)
           </a>

@@ -4,34 +4,29 @@ import "./SponSorship.css";
 function SponSorship() {
   return (
     <div className="sponsorship" id="sponsorship">
-        <h1 className="text-center p-5">SponSorship</h1>
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col" className="sponCard1">
-          <div class="card h-100">
-            <img src="/media/images/comeetees.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
+      <h1 className="text-center p-5 text-white">
+Sponsorship</h1>
+
+      {/* Flex wrapper */}
+      <div className="card-row">
+        {[1, 2, 3].map((num) => (
+          <div className="card" style={{ width: "22rem", height: "20rem" }} key={num}>
+            <div className="card-body">
+              <h5 className="card-title">Special title treatment {num}</h5>
+              <p className="card-text">
+                With supporting text below as a natural lead-in to additional
+                content.
+              </p>
+              <a href="#" className="button-90" role="button">Go somewhere</a>
+              
             </div>
           </div>
-        </div>
-        <div class="col" className="sponCard1">
-          <div class="card h-100">
-            <img src="/media/images/comeetees.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-        </div>
-        <div class="col" className="sponCard1">
-          <div class="card h-100">
-            <img src="/media/images/comeetees.jpg" class="card-img-top" alt="..." />
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-            </div>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
+   
   );
 }
+
 export default SponSorship;
+
