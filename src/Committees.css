@@ -1,9 +1,9 @@
 .committees{
-  background-color: rgb(36, 48, 48);
+  background-color:#F0F8FF;
   width: 100%;
-  height: 1500px;
+  height: 1100px;
   border: 2px solid ;
-  color: white;
+  color: black;
   text-align: center;
   
 }
@@ -28,10 +28,48 @@
 }
 
 
-.card_committessCard{
-  margin-left: 210px;
+.main-card{
+  align-items: center;
+  /* background-color: black; */
+  margin-left: 150px;
+}
+
+
+
+.card_committessCard1{
+  margin-left: 90px;
   text-align: center;
-  color: white;
+  /* color: white; */
+}
+
+
+.card_committessCard1:hover img{
+ transition: 1.5s ease;
+  transform: scale(1.1);
+   box-shadow: 4px 4px 30px 1px black;
+}
+
+
+.card-img-top{
+  width: 285;
+}
+
+
+
+/* center wala card */
+
+
+.main-card2{
+  /* background-color: blueviolet; */
+  margin-left: 320px;
+
+
+}
+
+.card_committessCard{
+  margin-left: 90px;
+  text-align: center;
+  /* color: white; */
    margin-bottom: 20px;
    margin-top: 50px;
 }
@@ -43,16 +81,3 @@
 }
   
 
-
-.card_committessCard1{
-  margin-left: 100px;
-  text-align: center;
-  color: white;
-}
-
-
-.card_committessCard1:hover img{
- transition: 1.5s ease;
-  transform: scale(1.1);
-   box-shadow: 4px 4px 30px 1px black;
-}

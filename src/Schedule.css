@@ -4,6 +4,7 @@
   background-color: #fff; /* A light background color */
   font-family: Arial, sans-serif;
   text-align: center;
+  border: 2px solid black;
 }
 
 .schedule .container {

@@ -1,68 +1,113 @@
-.sponsorship {
-  /* Full screen background image */
-  background: url("/media/images/sponsorback.jpg") no-repeat center center/cover;
-  /* min-height: 100%; */
-  padding: 40px 20px;
-  position: relative;
-  width: 100%;
+/* body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #f9fafb;
+  color: #1f2937;
+} */
+
+/* Wrapper */
+.team-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
 }
 
-.sponsorship::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.4);
-  z-index: 0;
+/* Header */
+.team-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.team-header .team-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.team-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+}
+.team-header h1 span {
+  color: #059669; /* teal-ish accent */
+}
+.team-header p {
+  font-size: 1.1rem;
+  color: #4b5563;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.sponsorship h1,
-.sponsorship .card {
-  position: relative;
-  z-index: 1; /* keep text and card above overlay */
+/* Grid of cards */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
 }
 
-
-
-.sponsorship {
-  /* padding: 40px 20px; */
-  background: #222;      /* example dark background */
-}
-
-.card-row {
-  display: flex;
-  justify-content: center;  /* center horizontally */
-  gap: 20px;                /* space between cards */
-  flex-wrap: nowrap;        /* keep all cards on one line */
-  overflow-x: auto;         /* allow scroll on very small screens */
-}
-
+/* Individual card */
 .card {
-  flex: 0 0 auto;           /* don't shrink cards */
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.06);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
 }
 
-
-.btn.primary {
-  background: linear-gradient(90deg,#ff7a18,#ff4e50);
-  color: #fff;
-  box-shadow: 0 8px 18px rgba(255,122,24,0.18);
-  border: none;
+.card-img {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #10b981;
+}
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.button-90 {
-  color: #fff;
-  padding: 15px 25px;
-  border-radius: 10px;
-  background-color: #4C43CD;
-  background-image: radial-gradient(93% 87% at 87% 89%, rgba(0, 0, 0, 0.23) 0%, transparent 86.18%), radial-gradient(66% 87% at 26% 20%, rgba(255, 255, 255, 0.41) 0%, rgba(255, 255, 255, 0) 69.79%, rgba(255, 255, 255, 0) 100%);
-  box-shadow: 2px 19px 31px rgba(0, 0, 0, 0.2);
-  font-weight: bold;
-  font-size: 16px;
+.card h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0.5rem 0;
+}
+.card h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #065f46;
+  margin: 0.25rem 0;
+}
+.company {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+}
 
-  border: 0;
+.rating {
+  font-size: 0.95rem;
+  color: #f59e0b;
+  margin-bottom: 0.75rem;
+}
+.rating span {
+  color: #374151;
+  margin-left: 0.25rem;
+}
 
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-
-  cursor: pointer;
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.tags span {
+  background: #ecfdf5;
+  color: #065f46;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 9999px;
 }

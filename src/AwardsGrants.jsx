@@ -1,12 +1,12 @@
-import React from 'react';
-import './AwardsGrants.css';
+import React from 'react'
 
-function AwardsGrants() {
+
+function AwardsGrands() {
   return (
-    <div className="awardsgrants" id='awardsgrants'>
-      <h2>Awards & Grants</h2>
-      </div>
-  );
+    <div>
+      
+    </div>
+  )
 }
 
-export default AwardsGrants;
+export default AwardsGrands;

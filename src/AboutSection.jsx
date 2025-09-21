@@ -6,7 +6,7 @@ function AboutSection() {
   return (
     <div className="container aboutSection" id="aboutSection"> 
        <div className='row'>
-        <div className='col-6 p-5'>
+        <div className='col-6 p-5 ' style={{background:"white"}}>
         
           <h1> ABOUT SUMMIT'25</h1>
           <p >The conference aims to provide a platform for academicians, researchers, industry professionals, and policymakers to discuss AI applications across diverse fields, encouraging knowledge exchange and innovation. It will showcase emerging research, tools, and technologies in AI, highlighting the latest advancements shaping intelligent systems.</p> 

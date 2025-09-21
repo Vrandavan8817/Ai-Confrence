@@ -9,7 +9,8 @@ import Committees from './Committees.jsx';
 import Schedule from './Schedule.jsx';
 import SponSorship from './SponSorship.jsx';
 import AwardsGrants from './AwardsGrants.jsx';
-import RegisterForm from './RegisterForm.jsx'
+import RegisterForm from './RegisterForm.jsx';
+import Footer from './Footer.jsx';
 
 
 function App() {
@@ -22,10 +23,11 @@ function App() {
     <ThemesTechnology/>
     <Committees/>
     {/* <Speakers/> */}
-    <RegisterForm/>
     <Schedule/>
     <SponSorship/>
+    <RegisterForm/>
     <AwardsGrants/>
+    <Footer/>
     </>
   )
 }
