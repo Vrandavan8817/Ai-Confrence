@@ -1,10 +1,11 @@
 .committees{
   background-color:#F0F8FF;
   width: 100%;
-  height: 1100px;
+  height: 1150px;
   border: 2px solid ;
   color: black;
   text-align: center;
+  
   
 }
 
@@ -31,7 +32,7 @@
 .main-card{
   align-items: center;
   /* background-color: black; */
-  margin-left: 150px;
+  margin-left: 120px;
 }
 
 
@@ -61,7 +62,7 @@
 
 .main-card2{
   /* background-color: blueviolet; */
-  margin-left: 320px;
+  margin-left: 290px;
 
 
 }
@@ -70,7 +71,7 @@
   margin-left: 90px;
   text-align: center;
   /* color: white; */
-   margin-bottom: 20px;
+   margin-bottom: 40px;
    margin-top: 50px;
 }
 

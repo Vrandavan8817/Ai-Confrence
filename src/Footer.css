@@ -22,7 +22,7 @@
 }
 
 .footer-wrapper {
-  max-width: 1200px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -132,7 +132,7 @@
   box-shadow: 0 0 8px var(--primary-color);
 }
 
-.newsletter-form button {
+.newsletter button {
   background-color: var(--primary-color);
   border: none;
   padding: 12px 24px;
@@ -144,7 +144,7 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.newsletter-form button:hover {
+.newsletter button:hover {
   background-color: #e85c50;
   transform: scale(1.05);
 }

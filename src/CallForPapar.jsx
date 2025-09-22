@@ -1,70 +1,138 @@
 import React from "react";
 import "./CallForPapar.css";
+const themes = [
+  "Core AI Technologies",
+  "AI in Science & Technology",
+  "AI in Society & Governance",
+  "Cross-cutting Issues",
+];
 
-function CallForPapar() {
+const importantDates = [
+  { title: "Abstract Submission Deadline", date: "15 November 2025" },
+  { title: "Full Paper Submission Deadline", date: "15 January 2026" },
+  { title: "Notification of Acceptance", date: "31 January 2026" },
+  { title: "Early Bird Registration Deadline", date: "31 January 2026" },
+];
+
+export default function CallForPapers() {
   return (
-    <section className="callforpaper" id="callforpaper" aria-labelledby="cfp-heading">
-      {/* decorative background image (aria-hidden since it is decorative) */}
-      <img
-        className="callforpaper-bg"
-        src="/media/images/callforpaperBackgroundImage.jpg"
-        alt=""
-        aria-hidden="true"
-      />
-      {/* semi-opaque overlay for contrast */}
-      {/* <div className="callforpaper-overlay" aria-hidden="true" /> */}
+    <div className="page-wrap" id="callforpaper">
+      {/* Hero */}
+      <header className="hero-hero">
+        <div className="hero-inner container text-center">
+          <button className="btn-pill-outline">CALL FOR PAPERS</button>
 
-      {/* content */}
-      <div className="callforpaper-content">
-        <h1 id="cfp-heading">Call For Papers — ICAI 2026</h1>
+          <h1 className="hero-title">ICAI 2026</h1>
 
-        <p className="lead">Dear Researcher,</p>
+          <p className="hero-sub">
+            International Conference on Artificial Intelligence
+          </p>
 
-        <p>
-          We are pleased to invite you to submit your original research papers,
-          case studies, and review articles for presentation at the
-          International Conference on Artificial Intelligence (ICAI-2026) to be
-          held on <strong>13–14 March 2026</strong> at Scope Global Skills
-          University, Bhopal, M.P., India.
-        </p>
-
-        <p>
-          The conference will feature plenary sessions, panel discussions, and
-          parallel technical tracks on AI in various fields, providing an
-          opportunity for knowledge exchange and collaborations.
-        </p>
-
-        <h2>Key Themes</h2>
-        <ul className="cfp-list">
-          <li>Core AI Technologies</li>
-          <li>AI in Science & Technology</li>
-          <li>AI in Society & Governance</li>
-          <li>Cross-cutting Issues</li>
-        </ul>
-
-        <h2>Important Dates</h2>
-        <ul className="cfp-list">
-          <li><strong>Abstract Submission Deadline:</strong> 15 November 2025</li>
-          <li><strong>Full Paper Submission Deadline:</strong> 15 January 2026</li>
-          <li><strong>Notification of Acceptance:</strong> 31 January 2026</li>
-          <li><strong>Early Bird Registration Deadline:</strong> 31 January 2026</li>
-        </ul>
-
-        <p>
-          <strong>Publication:</strong> Selected papers will be published in
-          Scopus/UGC-Care indexed journals or conference proceedings / Edited
-          Book with ISBN.
-        </p>
-
-        <div className="cfp-actions">
-          <a href="/submit-paper" className="button-90">Submit Paper</a>
-          <a href="/downloads/CFP-ICAI-2026.pdf" className="btn outline" target="_blank" rel="noopener noreferrer">
-            Download CFP (PDF)
-          </a>
+          <div className="hero-meta d-flex justify-content-center gap-4 text-white-75 align-items-center mt-3">
+            <span>• 13–14 March 2026</span>
+            <span className="hero-dot">|</span>
+            <span>• Scope Global Skills University, Bhopal, M.P., India</span>
+          </div>
         </div>
-      </div>
-    </section>
+        {/* subtle overlay glow */}
+        <div className="hero-overlay"></div>
+      </header>
+
+      {/* Main content */}
+      <main className="container main-container">
+        {/* Intro card */}
+        <section className="">
+          <div className="card big-card shadow-soft">
+            <div className="card-body text-center py-5">
+              <h2 className="fw-bold accent-blue mb-3">Dear Researcher,</h2>
+              <p className="lead text-muted mx-auto content-paragraph">
+                We are pleased to invite you to submit your original research
+                papers, case studies, and review articles for presentation at
+                the International Conference on Artificial Intelligence
+                (ICAI-2026). The conference will feature plenary sessions, panel
+                discussions, and parallel technical tracks on AI in various
+                fields, providing an opportunity for knowledge exchange and
+                collaborations.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Two-column block */}
+        <section className="mt-4">
+          <div className="row">
+            {/* Left - Key Themes */}
+            <div className="col-lg-7 mb-4">
+              <div className="card section-card shadow-soft">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-start mb-3">
+                    <div className="dot-blue me-3 mt-1"></div>
+                    <h4 className="mb-0 section-title">Key Themes</h4>
+                  </div>
+
+                  <div className="themes-list mt-4">
+                    {themes.map((t, i) => (
+                      <div key={i} className="theme-row card theme-box mb-3">
+                        <div className="card-body py-3 px-4 d-flex align-items-center">
+                          <div className="small-dot me-3"></div>
+                          <div className="flex-fill theme-text">{t}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Right - Important Dates */}
+            <div className="col-lg-5 mb-4">
+              <div className="card section-card shadow-soft">
+                <div className="card-body p-4">
+                  <div className="d-flex align-items-start mb-3">
+                    <div className="dot-blue me-3 mt-1"></div>
+                    <h4 className="mb-0 section-title">Important Dates</h4>
+                  </div>
+
+                  <ul className="list-unstyled important-dates mt-3">
+                    {importantDates.map((d, idx) => (
+                      <li className="mb-4 date-row" key={idx}>
+                        <div className="d-flex align-items-start">
+                          <div className="date-accent me-3"></div>
+                          <div>
+                            <div className="date-title">{d.title}</div>
+                            <div className="date-sub text-muted">{d.date}</div>
+                          </div>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Publication CTA */}
+        <section className="mt-4">
+          <div className="card big-card shadow-soft text-center py-5">
+            <div className="card-body">
+              <div className="d-flex justify-content-center align-items-center mb-3">
+                <div className="dot-blue me-3"></div>
+                <h4 className="mb-0 accent-blue fw-bold">Publication</h4>
+              </div>
+              <p className="text-muted mb-4">
+                Selected papers will be published in <strong>Scopus/UGC-Care indexed journals</strong> or conference
+                proceedings / Edited Book with ISBN.
+              </p>
+
+              <button className="btn-submit btn-glow">Submit Your Paper</button>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* bottom accent bar */}
+      <footer className="footer-accent"></footer>
+    </div>
   );
 }
-
-export default CallForPapar;

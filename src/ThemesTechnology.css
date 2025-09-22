@@ -1,7 +1,7 @@
 /* Card wrapper */
 .theme-card {
   position: relative;
-  overflow: hidden;                    /* crucial: prevents content from overflowing card box */
+  overflow: hidden;                    /* prevents content from overflowing card box */
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
   width: 100%;
@@ -14,14 +14,14 @@
 /* Full-cover image */
 .theme-card-img {
   position: absolute;
-  inset: 0;                             /* top:0; right:0; bottom:0; left:0; */
+  inset: 0;                            /* top:0; right:0; bottom:0; left:0; */
   width: 100%;
   height: 100%;
-  object-fit: cover;                    /* ensures full cover while preserving aspect ratio */
+  object-fit: cover;                   /* ensures full cover while preserving aspect ratio */
   z-index: 0;
 }
 
-/* Bottom-anchored text area that expands up but is clipped by .theme-card overflow */
+/* Bottom-anchored text area */
 .theme-card-body {
   position: absolute;
   left: 0;
@@ -31,37 +31,36 @@
   padding: 16px;
   background: linear-gradient(to top, rgba(0,0,0,0.75), rgba(0,0,0,0.25));
   color: #fff;
-  /* collapsed height (only title + button visible) */
-  max-height: 120px;
+  max-height: 120px;                   /* collapsed height */
   transition: max-height 400ms ease;
   display: flex;
   flex-direction: column;
 }
 
-/* When .show is active, expand the body upward but still stay inside card */
+/* Expand body on show */
 .theme-card.show .theme-card-body {
-  /* big enough to show list; still limited by .theme-card height due to overflow:hidden */
-  max-height: 300px;   /* tweak to allow how much expands — must be <= card height */
+  max-height: 300px;
+  background: rgba(0, 0, 0, 0.75);
+  transform: translateY(-40%);
 }
 
-/* Darker background overlay when More Info is active */
-.theme-card.show .theme-card-body {
-  background: rgba(0, 0, 0, 0.75);  /* darker than default 0.4 */
-  transform: translateY(-40%);      /* keep your existing slide-up effect */
+/* Title inside InfoCard */
+.h5-head {
+  color: #fff;        /* ✅ makes title white */
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: center;
 }
 
-
-/* The list area scrolls internally if content is taller than the expanded body */
+/* Extra info list */
 .extra-info {
   margin-top: 8px;
   overflow-y: auto;
-  /* calc: make room for title and button (adjust 60px if your heading/button sizes differ) */
   max-height: calc(100% - 72px);
-  /* smooth appearance */
   opacity: 1;
 }
 
-/* list styling */
 .extra-info ul {
   padding-left: 1.2rem;
   margin: 0;
@@ -87,7 +86,7 @@
   padding: 0;
 }
 
-/* small layout tweak */
+/* Layout tweak */
 .themescard {
   margin-left: 135px;
 }

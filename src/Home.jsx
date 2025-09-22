@@ -6,7 +6,7 @@ function Home() {
     <div className="home" id="home">
         <div style={{ position: "relative", width: "100%", height: "575px", overflow: "hidden" }}>
       <video
-        // autoPlay
+        autoPlay
         loop
         muted
         playsInline

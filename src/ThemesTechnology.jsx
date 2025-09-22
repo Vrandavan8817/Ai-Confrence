@@ -36,16 +36,19 @@ function InfoCard({ imgSrc, title, details }) {
 
 export default function ThemesTechnology() {
   return (
-    <div className="themestechnology p-3">
+    <div className="themestechnology p-5">
       <div className="themescard">
-        <h1 className="text-center p-3 mb-3">𝐓𝐡𝐞𝐦𝐞𝐬 & 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐢𝐞𝐬
-</h1>
+        <h1 className="text-center p-3 mb-3">
+          𝐓𝐡𝐞𝐦𝐞𝐬 & 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐢𝐞𝐬
+        </h1>
 
-        <div className="row row-cols-2 row-cols-sm-2 g-5" style={{ width: "60rem" }}>
+        <div
+          className="row row-cols-2 row-cols-sm-2 g-5"
+          style={{ width: "60rem" }}
+        >
           <InfoCard
             imgSrc="media/images/Themecard1.jpg"
-            title="𝐂𝐨𝐫𝐞 𝐀𝐈 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐢𝐞𝐬
-"
+            title="𝐂𝐨𝐫𝐞 𝐀𝐈 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐢𝐞𝐬"
             details={[
               "Machine Learning & Deep Learning",
               "Natural Language Processing",
