@@ -20,7 +20,7 @@ export default function CallForPapers() {
       {/* Hero */}
       <header className="hero-hero">
         <div className="hero-inner container text-center">
-          <button className="btn-pill-outline">CALL FOR PAPERS</button>
+          <h1 className="hero-title">CALL FOR PAPERS</h1>
 
           <h1 className="hero-title">ICAI 2026</h1>
 
@@ -28,7 +28,7 @@ export default function CallForPapers() {
             International Conference on Artificial Intelligence
           </p>
 
-          <div className="hero-meta d-flex justify-content-center gap-4 text-white-75 align-items-center mt-3">
+          <div className="hero-meta d-flex justify-content-center gap-4 text-white-75 align-items-center mt-2">
             <span>• 13–14 March 2026</span>
             <span className="hero-dot">|</span>
             <span>• Scope Global Skills University, Bhopal, M.P., India</span>
@@ -43,7 +43,7 @@ export default function CallForPapers() {
         {/* Intro card */}
         <section className="">
           <div className="card big-card shadow-soft">
-            <div className="card-body text-center py-5">
+            <div className="card-body text-center py-4">
               <h2 className="fw-bold accent-blue mb-3">Dear Researcher,</h2>
               <p className="lead text-muted mx-auto content-paragraph">
                 We are pleased to invite you to submit your original research
@@ -113,7 +113,7 @@ export default function CallForPapers() {
         </section>
 
         {/* Publication CTA */}
-        <section className="mt-4">
+        {/* <section className="mt-4">
           <div className="card big-card shadow-soft text-center py-5">
             <div className="card-body">
               <div className="d-flex justify-content-center align-items-center mb-3">
@@ -128,7 +128,7 @@ export default function CallForPapers() {
               <button className="btn-submit btn-glow">Submit Your Paper</button>
             </div>
           </div>
-        </section>
+        </section> */}
       </main>
 
       {/* bottom accent bar */}

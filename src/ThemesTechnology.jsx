@@ -58,7 +58,7 @@ export default function ThemesTechnology() {
             ]}
           />
           <InfoCard
-            imgSrc="media/images/Themecard2.jpg"
+            imgSrc="media/images/Themecard4.jpg"
             title="𝐀𝐈 𝐢𝐧 𝐒𝐜𝐢𝐞𝐧𝐜𝐞 & 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐲"
             details={[
               "Scientific Computing",
@@ -69,7 +69,7 @@ export default function ThemesTechnology() {
             ]}
           />
           <InfoCard
-            imgSrc="media/images/Themecard3.jpg"
+            imgSrc="media/images/Themecard33.png"
             title="𝐀𝐈 𝐢𝐧 𝐒𝐨𝐜𝐢𝐞𝐭𝐲 & 𝐆𝐨𝐯𝐞𝐫𝐧𝐚𝐧𝐜𝐞"
             details={[
               "AI Policy & Ethics",
@@ -80,7 +80,7 @@ export default function ThemesTechnology() {
             ]}
           />
           <InfoCard
-            imgSrc="media/images/Themecard4.jpg"
+            imgSrc="media/images/Themecard2.jpg"
             title="𝐂𝐫𝐨𝐬𝐬-𝐜𝐮𝐭𝐭𝐢𝐧𝐠 𝐈𝐬𝐬𝐮𝐞𝐬"
             details={[
               "Sustainability & Green AI",

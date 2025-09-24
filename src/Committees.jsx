@@ -7,7 +7,7 @@ function Committees() {
       <div className="d-flex mt-5 main-card ">
         <div className="card_committessCard1">
           <img
-            src="/media/images/comeetees.jpg"
+            src="/media/images/santoshChobey4.png"
             className="card-img-top"
             alt="Siddharth Chaturvedi"
             style={{ borderRadius: "50%" }}
@@ -27,7 +27,7 @@ function Committees() {
 
         <div className="card_committessCard1">
           <img
-            src="/media/images/comeetees.jpg"
+            src="/media/images/siddharth1.jpg"
             className="card-img-top"
             alt="Siddharth Chaturvedi"
             style={{ borderRadius: "50%" }}
@@ -47,7 +47,7 @@ function Committees() {
 
         <div className="card_committessCard1">
           <img
-            src="/media/images/comeetees.jpg"
+            src="/media/images/aditi.jpg"
             className="card-img-top"
             alt="Siddharth Chaturvedi"
             style={{ borderRadius: "50%" }}
@@ -69,7 +69,7 @@ function Committees() {
       <div className="d-flex main-card2">
         <div className="card_committessCard">
           <img
-            src="/media/images/comeetees.jpg"
+            src="/media/images/vijay1.jpg"
             className="card-img-top"
             alt="Siddharth Chaturvedi"
             style={{ borderRadius: "50%" }}
@@ -85,7 +85,7 @@ function Committees() {
 
         <div className="card_committessCard">
           <img
-            src="/media/images/comeetees.jpg"
+            src="/media/images/sitesh.jpg"
             className="card-img-top"
             alt="Siddharth Chaturvedi"
             style={{ borderRadius: "50%" }}
@@ -135,7 +135,7 @@ function Committees() {
 
         <div className="card_committessCard1">
           <img
-            src="/media/images/comeetees.jpg"
+            src="/media/images/pooja1.jpg"
             className="card-img-top"
             alt="Siddharth Chaturvedi"
             style={{ borderRadius: "50%" }}
