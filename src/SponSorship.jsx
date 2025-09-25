@@ -130,7 +130,7 @@ const experts = [
 
 export default function App() {
   return (
-    <div className="team-wrapper sponsorship" id="sponsorship">
+    <div className="team-wrapper sponsorship border-top" id="sponsorship">
       <div className="team-header">
         <div className="team-icon">👥</div>
         <h1>

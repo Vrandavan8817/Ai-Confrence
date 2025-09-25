@@ -1,59 +1,105 @@
-import React from 'react';
-import './Schedule.css';
+import React, { useEffect } from "react";
+import "./Schedule.css";
 
 function Schedule() {
+  useEffect(() => {
+    const items = document.querySelectorAll(".agenda-item, .agenda-column, .schedule-title, .subtitle, .btn-schedule");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("fade-in");
+            observer.unobserve(entry.target); // एक बार show होने के बाद दोबारा observe नहीं होगा
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    items.forEach((item) => observer.observe(item));
+  }, []);
+
   return (
-    <div className="schedule" id="schedule">
-      <div className="container p-5">
-        <h1>SCHEDULE</h1>
+    <section className="schedule" id="schedule">
+      <div className="container">
+        <h1 className="schedule-title">SCHEDULE</h1>
         <p className="subtitle">
-          Click for the <a href="#">full schedule</a> of events at The AI Conference 2025.<br />
-          Email <span className="highlight">subscribers</span> and <span className="highlight">ticket holders</span> will get content notifications
+          Click for the full schedule of events at The AI
+          Conference 2025. <br />
+          Email <span className="highlight">subscribers</span> and{" "}
+          <span className="highlight">ticket holders</span> will get content
+          notifications.
         </p>
 
-        <a href="#" className="button-90">VIEW THE FULL SCHEDULE</a>
+        <a href="media/images/document.pdf" target="_blank" 
+  rel="noopener noreferrer"  className="btn-schedule">
+          VIEW THE FULL SCHEDULE
+        </a>
 
-        <div className="agenda-columns mt-5 p-3">
+        <div className="agenda-columns">
+          {/* Column 1 */}
           <div className="agenda-column">
             <h2>17th SEPTEMBER WEDNESDAY 2026</h2>
-            <div className="agenda-item"><span className="time">09:00 AM</span><span className="event">Registration & Welcome Kit Distribution</span></div>
-            <div className="agenda-item"><span className="time">09:30 AM</span><span className="event">Inaugural Ceremony (Lamp Lighting, Welcome Address)</span></div>
-            <div className="agenda-item"><span className="time">10:00 AM</span><span className="event">Conference Overview & Theme Introduction</span></div>
-            <div className="agenda-item"><span className="time">10:15 AM</span><span className="event">Address by Chief Guest (Policy Leader/VC)</span></div>
-            <div className="agenda-item"><span className="time">10:30 AM</span><span className="event">Vote of Thanks</span></div>
-            <div className="agenda-item highlighted"><span className="time">10:40 AM</span><span className="event">Tea / Networking Break</span></div>
-            <div className="agenda-item"><span className="time">11:00 AM</span><span className="event">Keynote 1 (International Speaker – Virtual/Physical)</span></div>
-            <div className="agenda-item"><span className="time">11:45 AM</span><span className="event">Keynote 2 (Eminent Indian Researcher – IIT/IISc)</span></div>
-            <div className="agenda-item"><span className="time">12:30 PM</span><span className="event">Plenary Talk (Industry Leader – NASSCOM/Infosys/TCS/IBM/Google)</span></div>
-            <div className="agenda-item highlighted"><span className="time">01:15 PM</span><span className="event">Lunch Break</span></div>
-            <div className="agenda-item"><span className="time">02:15 PM</span><span className="event">Technical Session 1 (AI in Healthcare / AgriTech) – 6 Papers</span></div>
-            <div className="agenda-item highlighted"><span className="time">03:45 PM</span><span className="event">Tea / High Tea Break</span></div>
-            <div className="agenda-item"><span className="time">04:00 PM</span><span className="event">Panel Discussion: “Future of AI in India & Asia”</span></div>
-            <div className="agenda-item"><span className="time">05:30 PM</span><span className="event">Cultural Performance (Student Wing)</span></div>
-            <div className="agenda-item highlighted"><span className="time">06:00 PM</span><span className="event">Networking High Tea</span></div>
+            {[
+              ["09:00 AM", "Registration & Welcome Kit Distribution"],
+              ["09:30 AM", "Inaugural Ceremony (Lamp Lighting, Welcome Address)"],
+              ["10:00 AM", "Conference Overview & Theme Introduction"],
+              ["10:15 AM", "Address by Chief Guest (Policy Leader/VC)"],
+              ["10:30 AM", "Vote of Thanks"],
+              ["10:40 AM", "Tea / Networking Break", true],
+              ["11:00 AM", "Keynote 1 (International Speaker – Virtual/Physical)"],
+              ["11:45 AM", "Keynote 2 (Eminent Indian Researcher – IIT/IISc)"],
+              ["12:30 PM", "Plenary Talk (Industry Leader – NASSCOM/Infosys/TCS/IBM/Google)"],
+              ["01:15 PM", "Lunch Break", true],
+              ["02:15 PM", "Technical Session 1 (AI in Healthcare / AgriTech) – 6 Papers"],
+              ["03:45 PM", "Tea / High Tea Break", true],
+              ["04:00 PM", "Panel Discussion: “Future of AI in India & Asia”"],
+              ["05:30 PM", "Cultural Performance (Student Wing)"],
+              ["06:00 PM", "Networking High Tea", true],
+            ].map(([time, event, highlight], idx) => (
+              <div
+                key={idx}
+                className={`agenda-item ${highlight ? "highlighted" : ""}`}
+              >
+                <span className="time">{time}</span>
+                <span className="event">{event}</span>
+              </div>
+            ))}
           </div>
 
+          {/* Column 2 */}
           <div className="agenda-column">
-            <h2>18th SEPTEMBER WEDNESDAY 2026</h2>
-            <div className="agenda-item"><span className="time">09:00 AM</span><span className="event">Recap of Day 1 & Announcements</span></div>
-            <div className="agenda-item"><span className="time">09:15 AM</span><span className="event">Keynote 3 (Asian Expert – NUS/NTU/Tokyo)</span></div>
-            <div className="agenda-item"><span className="time">10:00 AM</span><span className="event">Keynote 4 (Applied AI – Microsoft India / Google Research)</span></div>
-            <div className="agenda-item highlighted"><span className="time">10:45 AM</span><span className="event">Tea Break</span></div>
-            <div className="agenda-item"><span className="time">11:00 AM</span><span className="event">Technical Session 2 (AI in Education, Finance, Cybersecurity) – 8 Papers</span></div>
-            <div className="agenda-item highlighted"><span className="time">12:30 PM</span><span className="event">Lunch Break</span></div>
-            <div className="agenda-item"><span className="time">01:30 PM</span><span className="event">Parallel Tracks – Track A: Deep Learning, Track B: Robotics</span></div>
-            <div className="agenda-item highlighted"><span className="time">03:00 PM</span><span className="event">Tea / High Tea Break</span></div>
-            <div className="agenda-item"><span className="time">03:15 PM</span><span className="event">Workshop / Demo (AI Startups / Hackathon Showcase)</span></div>
-            <div className="agenda-item"><span className="time">04:00 PM</span><span className="event">Roundtable: “AI Policy, Ethics & Regulation”</span></div>
-            <div className="agenda-item"><span className="time">04:45 PM</span><span className="event">Poster Session & Jury Evaluation</span></div>
-            <div className="agenda-item"><span className="time">05:30 PM</span><span className="event">Valedictory Address (Govt. Official)</span></div>
-            <div className="agenda-item"><span className="time">06:00 PM</span><span className="event">Best Paper & Poster Awards</span></div>
-            <div className="agenda-item"><span className="time">06:30 PM</span><span className="event">Vote of Thanks & National Anthem</span></div>
-            <div className="agenda-item highlighted"><span className="time">06:45 PM</span><span className="event">Farewell High Tea & Departure</span></div>
+            <h2>18th SEPTEMBER THURSDAY 2026</h2>
+            {[
+              ["09:00 AM", "Recap of Day 1 & Announcements"],
+              ["09:15 AM", "Keynote 3 (Asian Expert – NUS/NTU/Tokyo)"],
+              ["10:00 AM", "Keynote 4 (Applied AI – Microsoft India / Google Research)"],
+              ["10:45 AM", "Tea Break", true],
+              ["11:00 AM", "Technical Session 2 (AI in Education, Finance, Cybersecurity) – 8 Papers"],
+              ["12:30 PM", "Lunch Break", true],
+              ["01:30 PM", "Parallel Tracks – Track A: Deep Learning, Track B: Robotics"],
+              ["03:00 PM", "Tea / High Tea Break", true],
+              ["03:15 PM", "Workshop / Demo (AI Startups / Hackathon Showcase)"],
+              ["04:00 PM", "Roundtable: “AI Policy, Ethics & Regulation”"],
+              ["04:45 PM", "Poster Session & Jury Evaluation"],
+              ["05:30 PM", "Valedictory Address (Govt. Official)"],
+              ["06:00 PM", "Best Paper & Poster Awards"],
+              ["06:30 PM", "Vote of Thanks & National Anthem"],
+              ["06:45 PM", "Farewell High Tea & Departure", true],
+            ].map(([time, event, highlight], idx) => (
+              <div
+                key={idx}
+                className={`agenda-item ${highlight ? "highlighted" : ""}`}
+              >
+                <span className="time">{time}</span>
+                <span className="event">{event}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
