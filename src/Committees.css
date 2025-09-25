@@ -1,87 +1,78 @@
-.committees{
-  background-color:#F0F8FF;
+.committees {
+  background-color: white;
   width: 100%;
-  height: 1150px;
-  border: 2px solid ;
+  padding: 60px 20px;
   color: black;
   text-align: center;
-  
-  
+  border: 2px solid black;
 }
 
-.committessCard{
-  margin-left: 450px;
-  margin-top: 130px;
-  margin-bottom: 60px;
-  
+/* row wrapper */
+.committee-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 70px; /* row & col gap */
+  margin-bottom: 50px;
 }
 
-.committessCard img{
+/* card design */
+.committee-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-width: 250px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.committee-card img {
+  width: 200px;
+  height: 200px;
   object-fit: cover;
-  transition: transfrom 0.8s;
-  height: 100%;
+  border-radius: 50%;
+  margin-bottom: 15px;
 }
 
-.committessCard:hover img{
-  transition: 1.5s ease;
-  transform: scale(1.1);
-  box-shadow: 4px 4px 30px 1px black;
+.committee-card:hover {
+  transform: scale(1.05);
+  box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.3);
 }
 
-
-.main-card{
-  align-items: center;
-  /* background-color: black; */
-  margin-left: 120px;
+.card-body {
+  font-size: 0.95rem;
 }
 
-
-
-.card_committessCard1{
-  margin-left: 90px;
-  text-align: center;
-  /* color: white; */
+/* responsive breakpoints */
+@media (max-width: 992px) {
+  .committee-card {
+    max-width: 220px;
+  }
 }
 
-
-.card_committessCard1:hover img{
- transition: 1.5s ease;
-  transform: scale(1.1);
-   box-shadow: 4px 4px 30px 1px black;
+@media (max-width: 768px) {
+  .committee-row {
+    gap: 40px;
+  }
+  .committee-card {
+    max-width: 200px;
+  }
+  .committee-card img {
+    width: 160px;
+    height: 160px;
+  }
 }
 
-
-.card-img-top{
-  width: 220px;
-  height: 220px;
-  object-fit: cover;
-  
+@media (max-width: 576px) {
+  .committee-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .committee-card {
+    max-width: 90%;
+  }
+  .committee-card img {
+    width: 140px;
+    height: 140px;
+  }
 }
-
-
-
-/* center wala card */
-
-
-.main-card2{
-  /* background-color: blueviolet; */
-  margin-left: 290px;
-
-
-}
-
-.card_committessCard{
-  margin-left: 90px;
-  text-align: center;
-  /* color: white; */
-   margin-bottom: 40px;
-   margin-top: 50px;
-}
-
-.card_committessCard:hover img{
-  transition: 1.5s ease;
-  transform: scale(1.1);
-   box-shadow: 4px 4px 30px 1px black;
-}
-  
-

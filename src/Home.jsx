@@ -4,25 +4,25 @@ import "./Home.css";
 function Home() {
   return (
     <div className="home" id="home">
-        <div style={{ position: "relative", width: "100%", height: "575px", overflow: "hidden" }}>
       <video
-        // autoPlay
+        className="home-video"
+        autoPlay
         loop
         muted
         playsInline
-        style={{
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          position: "absolute",
-          top: 0,
-          left: 0,
-          zIndex: 1,
-        }}
       >
-<source src="/media/videos/Home.mp4" type="video/mp4" />
- </video>
-    </div>
+        <source src="/media/videos/Home.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* Overlay (optional, in case you want text later) */}
+      <div className="overlay"></div>
+
+      {/* Example content (optional) */}
+      {/* <div className="home-content">
+        <h1>Welcome to Summit'25</h1>
+        <p>Exploring the Future with AI</p>
+      </div> */}
     </div>
   );
 }

@@ -1,23 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 
 function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <div className="navbar-clone">
-      <div className="navbar">
-        <ul>
-          <li><a href='#home' style={{textDecoration:'none', color:'#e5e5e5'}}>Home</a></li>
-          <li><a href='#aboutSection' style={{textDecoration:'none', color:'#e5e5e5'}}>About Us</a></li>
-          <li><a href='#callforpaper' style={{textDecoration:'none', color:'#e5e5e5'}}>Call For Paper</a></li>
-          <li><a href='#committees' style={{textDecoration:'none', color:'#e5e5e5'}}>Committees</a></li>
-          <li><a href='#sponsorship' style={{textDecoration:'none', color:'#e5e5e5'}}>Experts</a></li>
-          <li><a href='#speakers' style={{textDecoration:'none', color:'#e5e5e5'}}>Speakers</a></li>
-          <li><a href='#awardsgrants' style={{textDecoration:'none', color:'#e5e5e5'}}>Awards Grants</a></li>
-          <li><a href='#schedule' style={{textDecoration:'none', color:'#e5e5e5'}}>Schedule</a></li>
-          <li><a href='#registerform' style={{textDecoration:'none', color:'#e5e5e5'}}>Register</a></li>
+    <header className="navbar-clone">
+      <nav className="navbar">
+        <a href="#home" className="logo">SUMMIT'25</a>
+
+        <ul className={`nav-links ${isOpen ? "open" : ""}`}>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#aboutSection">About Us</a></li>
+          <li><a href="#callforpaper">Call For Paper</a></li>
+          <li><a href="#committees">Committees</a></li>
+          <li><a href="#sponsorship">Experts</a></li>
+          <li><a href="#speakers">Speakers</a></li>
+          <li><a href="#awardsgrants">Awards Grants</a></li>
+          <li><a href="#schedule">Schedule</a></li>
+          <li><a href="#registerform">Register</a></li>
         </ul>
-      </div>
-    </div>
+
+        <button 
+          className={`nav-toggle ${isOpen ? "active" : ""}`} 
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle navigation"
+        >
+          <i className="fa-solid fa-bars"></i>
+        </button>
+      </nav>
+    </header>
   );
 }
 

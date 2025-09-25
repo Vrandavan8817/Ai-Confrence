@@ -5,11 +5,10 @@ function InfoCard({ imgSrc, title, details }) {
   const [showInfo, setShowInfo] = useState(false);
 
   return (
-    <div className="col">
+    <div className="col d-flex justify-content-center">
       <div className={`theme-card ${showInfo ? "show" : ""}`}>
         <img src={imgSrc} alt={title} className="theme-card-img" />
 
-        {/* bottom-anchored text area that expands upward but stays inside the card */}
         <div className="theme-card-body" aria-expanded={showInfo}>
           <h5 className="text-center h5-head">{title}</h5>
 
@@ -36,16 +35,12 @@ function InfoCard({ imgSrc, title, details }) {
 
 export default function ThemesTechnology() {
   return (
-    <div className="themestechnology p-5">
+    <div className="themestechnology p-4">
       <div className="themescard">
-        <h1 className="text-center p-3 mb-3">
-          𝐓𝐡𝐞𝐦𝐞𝐬 & 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐢𝐞𝐬
-        </h1>
+        <h1 className="text-center p-3 mb-4">𝐓𝐡𝐞𝐦𝐞𝐬 & 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐢𝐞𝐬</h1>
 
-        <div
-          className="row row-cols-2 row-cols-sm-2 g-5"
-          style={{ width: "60rem" }}
-        >
+        {/* ✅ 2 cards per row always */}
+        <div className="row custom-row">
           <InfoCard
             imgSrc="media/images/Themecard1.jpg"
             title="𝐂𝐨𝐫𝐞 𝐀𝐈 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐢𝐞𝐬"
