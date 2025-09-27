@@ -73,7 +73,7 @@ function Committees() {
         </div>
 
         <div className="committee-card">
-          <img src="/media/images/comeetees.jpg" alt="Veenadhari" />
+          <img src="/media/images/veenadhari.jpg" alt="Veenadhari" />
           <div className="card-body">
             <strong>𝗗𝗿 𝗩𝗲𝗲𝗻𝗮𝗱𝗵𝗮𝗿𝗶</strong>
             <br />

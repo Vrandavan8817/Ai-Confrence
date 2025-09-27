@@ -11,6 +11,7 @@ import SponSorship from './SponSorship.jsx';
 import AwardsGrants from './AwardsGrants.jsx';
 import RegisterForm from './RegisterForm.jsx';
 import Footer from './Footer.jsx';
+import AdminTable from './AdminTable.jsx';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
     <Schedule/>
     <SponSorship/>
     <RegisterForm/>
+    {/* <AdminTable/> */}
     <AwardsGrants/>
     <Footer/>
     </>
