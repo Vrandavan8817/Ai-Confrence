@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./RegisterForm.css";
 
+const API_URL = "https://ai-confrence-backend.onrender.com/api/register";
+
 const RegisterForm = () => {
   const [formData, setFormData] = useState({});
   const [validated, setValidated] = useState(false);
   const [message, setMessage] = useState("");
+  const [messageType, setMessageType] = useState(""); // success | error
 
   // Handle input changes
   const handleChange = (e) => {
@@ -21,7 +24,7 @@ const RegisterForm = () => {
     });
   };
 
-  // ✅ Submit form
+  // Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.currentTarget;
@@ -31,23 +34,57 @@ const RegisterForm = () => {
     } else {
       try {
         const data = new FormData();
-        Object.keys(formData).forEach((key) => {
-          data.append(key, formData[key]);
+
+        // ✅ Append fields one by one (exact names backend expects)
+        data.append("fullName", formData.fullName || "");
+        data.append("gender", formData.gender || "");
+        data.append("dob", formData.dob || "");
+        data.append("nationality", formData.nationality || "");
+        data.append("mobile", formData.mobile || "");
+        data.append("email", formData.email || "");
+        data.append("address", formData.address || "");
+        data.append("institution", formData.institution || "");
+        data.append("designation", formData.designation || "");
+        data.append("department", formData.department || "");
+        data.append("category", formData.category || "");
+        data.append("fee", formData.fee || "");
+        data.append("paymentRef", formData.paymentRef || "");
+        data.append("participation", formData.participation || "");
+        data.append("submissionTitle", formData.submissionTitle || "");
+        data.append("authors", formData.authors || "");
+        data.append("abstractText", formData.abstractText || "");
+
+        // ✅ Files
+        if (formData.receipt) data.append("receipt", formData.receipt);
+        if (formData.abstractFile) data.append("abstractFile", formData.abstractFile);
+
+        // ✅ Checkbox (must be "true"/"false")
+        data.append("declaration", formData.declaration ? "true" : "false");
+
+        // === Axios Request ===
+        const res = await axios.post(API_URL, data, {
+          headers: { "Content-Type": "multipart/form-data" },
         });
 
-        // ✅ Render backend ka URL
-        const res = await axios.post(
-          "https://ai-confrence-backend.onrender.com/api/register",
-          data,
-          { headers: { "Content-Type": "multipart/form-data" } }
-        );
+        if (res.data.success) {
+          setMessage("✅ Registration successful!");
+          setMessageType("success");
 
-        setMessage(res.data.message || "✅ Registered successfully!");
-        setFormData({});
-        form.reset();
-        setValidated(false);
+          // reset form
+          setFormData({});
+          form.reset();
+          setValidated(false);
+        } else {
+          setMessage("❌ " + (res.data.message || "Registration failed"));
+          setMessageType("error");
+        }
+
+        setTimeout(() => setMessage(""), 5000); // auto-hide after 5 sec
       } catch (err) {
-        setMessage(err.response?.data?.error || "❌ Registration failed");
+        console.error("❌ Error Response:", err.response?.data || err.message);
+        setMessage("❌ " + (err.response?.data?.message || "Server error"));
+        setMessageType("error");
+        setTimeout(() => setMessage(""), 5000);
       }
     }
 
@@ -56,6 +93,17 @@ const RegisterForm = () => {
 
   return (
     <div className="registerform">
+      {/* ✅ Top Notification */}
+      {message && (
+        <div
+          className={`alert-box ${
+            messageType === "success" ? "alert-success" : "alert-error"
+          }`}
+        >
+          {message}
+        </div>
+      )}
+
       <div className="container p-5" id="registerform">
         <h2 className="text-center mb-3 fw-bold">
           Conference Registration Form
@@ -64,16 +112,6 @@ const RegisterForm = () => {
           Please fill out all sections to complete your registration
         </p>
 
-        {/* ✅ Success/Error Message */}
-        {message && (
-          <p
-            className="text-center fw-bold"
-            style={{ color: message.startsWith("✅") ? "green" : "red" }}
-          >
-            {message}
-          </p>
-        )}
-
         <form
           className={`form-card p-4 shadow-sm rounded needs-validation ${
             validated ? "was-validated" : ""
@@ -81,7 +119,7 @@ const RegisterForm = () => {
           noValidate
           onSubmit={handleSubmit}
         >
-          {/* ================== Personal Info ================== */}
+          {/* === Personal Info === */}
           <h5 className="mb-3">Personal Information</h5>
           <div className="row mb-3">
             <div className="col-md-6">
@@ -112,9 +150,7 @@ const RegisterForm = () => {
                   </div>
                 ))}
               </div>
-              <div className="invalid-feedback">
-                Please select your gender
-              </div>
+              <div className="invalid-feedback">Please select your gender</div>
             </div>
           </div>
 
@@ -189,7 +225,7 @@ const RegisterForm = () => {
             <div className="invalid-feedback">Address is required</div>
           </div>
 
-          {/* ================== Professional Details ================== */}
+          {/* === Professional Details === */}
           <h5 className="mb-3">Professional Details</h5>
           <div className="mb-3">
             <label className="form-label">Institution/Organization</label>
@@ -225,7 +261,7 @@ const RegisterForm = () => {
             <div className="invalid-feedback">Department is required</div>
           </div>
 
-          {/* ================== Payment Details ================== */}
+          {/* === Payment Details === */}
           <h5 className="mb-3">Registration & Payment</h5>
           <div className="mb-3">
             <label className="form-label">Participant Category</label>
@@ -289,7 +325,7 @@ const RegisterForm = () => {
             <div className="invalid-feedback">Receipt upload is required</div>
           </div>
 
-          {/* ================== Conference ================== */}
+          {/* === Conference === */}
           <h5 className="mb-3">Conference Participation</h5>
           <div className="mb-3">
             <label className="form-label">Participation Category</label>
@@ -366,7 +402,7 @@ const RegisterForm = () => {
             <div className="invalid-feedback">Abstract file required</div>
           </div>
 
-          {/* ================== Declaration ================== */}
+          {/* === Declaration === */}
           <h5 className="mb-3">Declaration</h5>
           <div className="form-check mb-3">
             <input

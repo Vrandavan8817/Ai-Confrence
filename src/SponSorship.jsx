@@ -106,7 +106,7 @@ const experts = [
   },
 
   {
-    id: 6,
+    id: 7,
     name: "David Kim",
     title: "Blockchain Engineer",
     company: "Crypto Solutions",
@@ -117,7 +117,7 @@ const experts = [
   },
 
   {
-    id: 6,
+    id: 8,
     name: "David Kim",
     title: "Blockchain Engineer",
     company: "Crypto Solutions",
