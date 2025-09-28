@@ -9,6 +9,8 @@ const RegisterForm = () => {
   const [validated, setValidated] = useState(false);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState(""); // success | error
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState({});
 
   // Handle input changes
   const handleChange = (e) => {
@@ -22,6 +24,40 @@ const RegisterForm = () => {
           ? checked
           : value,
     });
+    
+    // Clear field-specific error when user starts typing
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: null }));
+    }
+  };
+
+  // Validate form data
+  const validateForm = () => {
+    const newErrors = {};
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (formData.email && !emailRegex.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+    
+    // Mobile validation
+    const mobileRegex = /^[0-9]{10}$/;
+    if (formData.mobile && !mobileRegex.test(formData.mobile)) {
+      newErrors.mobile = "Please enter a valid 10-digit mobile number";
+    }
+    
+    // File size validation (2MB for receipt, 5MB for abstract)
+    if (formData.receipt && formData.receipt.size > 2 * 1024 * 1024) {
+      newErrors.receipt = "Receipt file size must be less than 2MB";
+    }
+    
+    if (formData.abstractFile && formData.abstractFile.size > 5 * 1024 * 1024) {
+      newErrors.abstractFile = "Abstract file size must be less than 5MB";
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   // Submit form
@@ -31,61 +67,89 @@ const RegisterForm = () => {
 
     if (form.checkValidity() === false) {
       e.stopPropagation();
-    } else {
-      try {
-        const data = new FormData();
+      setValidated(true);
+      return;
+    }
 
-        // ✅ Append fields one by one (exact names backend expects)
-        data.append("fullName", formData.fullName || "");
-        data.append("gender", formData.gender || "");
-        data.append("dob", formData.dob || "");
-        data.append("nationality", formData.nationality || "");
-        data.append("mobile", formData.mobile || "");
-        data.append("email", formData.email || "");
-        data.append("address", formData.address || "");
-        data.append("institution", formData.institution || "");
-        data.append("designation", formData.designation || "");
-        data.append("department", formData.department || "");
-        data.append("category", formData.category || "");
-        data.append("fee", formData.fee || "");
-        data.append("paymentRef", formData.paymentRef || "");
-        data.append("participation", formData.participation || "");
-        data.append("submissionTitle", formData.submissionTitle || "");
-        data.append("authors", formData.authors || "");
-        data.append("abstractText", formData.abstractText || "");
+    // Custom validation
+    if (!validateForm()) {
+      setMessage("❌ Please fix the errors in the form");
+      setMessageType("error");
+      setTimeout(() => setMessage(""), 5000);
+      return;
+    }
 
-        // ✅ Files
-        if (formData.receipt) data.append("receipt", formData.receipt);
-        if (formData.abstractFile) data.append("abstractFile", formData.abstractFile);
+    setIsLoading(true);
+    
+    try {
+      const data = new FormData();
 
-        // ✅ Checkbox (must be "true"/"false")
-        data.append("declaration", formData.declaration ? "true" : "false");
+      // Append fields one by one (exact names backend expects)
+      data.append("fullName", formData.fullName || "");
+      data.append("gender", formData.gender || "");
+      data.append("dob", formData.dob || "");
+      data.append("nationality", formData.nationality || "");
+      data.append("mobile", formData.mobile || "");
+      data.append("email", formData.email || "");
+      data.append("address", formData.address || "");
+      data.append("institution", formData.institution || "");
+      data.append("designation", formData.designation || "");
+      data.append("department", formData.department || "");
+      data.append("category", formData.category || "");
+      data.append("fee", formData.fee || "");
+      data.append("paymentRef", formData.paymentRef || "");
+      data.append("participation", formData.participation || "");
+      data.append("submissionTitle", formData.submissionTitle || "");
+      data.append("authors", formData.authors || "");
+      data.append("abstractText", formData.abstractText || "");
 
-        // === Axios Request ===
-        const res = await axios.post(API_URL, data, {
-          headers: { "Content-Type": "multipart/form-data" },
-        });
+      // Files
+      if (formData.receipt) data.append("receipt", formData.receipt);
+      if (formData.abstractFile) data.append("abstractFile", formData.abstractFile);
 
-        if (res.data.success) {
-          setMessage("✅ Registration successful!");
-          setMessageType("success");
+      // Checkbox (must be "true"/"false")
+      data.append("declaration", formData.declaration ? "true" : "false");
 
-          // reset form
-          setFormData({});
-          form.reset();
-          setValidated(false);
-        } else {
-          setMessage("❌ " + (res.data.message || "Registration failed"));
-          setMessageType("error");
-        }
+      // Axios Request with timeout
+      const res = await axios.post(API_URL, data, {
+        headers: { "Content-Type": "multipart/form-data" },
+        timeout: 120000, // 30 seconds timeout
+      });
 
-        setTimeout(() => setMessage(""), 5000); // auto-hide after 5 sec
-      } catch (err) {
-        console.error("❌ Error Response:", err.response?.data || err.message);
-        setMessage("❌ " + (err.response?.data?.message || "Server error"));
+      if (res.data.success) {
+        setMessage("✅ Registration successful!");
+        setMessageType("success");
+
+        // Reset form
+        setFormData({});
+        form.reset();
+        setValidated(false);
+      } else {
+        setMessage("❌ " + (res.data.message || "Registration failed"));
         setMessageType("error");
-        setTimeout(() => setMessage(""), 5000);
       }
+
+      setTimeout(() => setMessage(""), 5000); // Auto-hide after 5 sec
+    } catch (err) {
+      console.error("❌ Error Response:", err.response?.data || err.message);
+      
+      // Handle different error types
+      let errorMessage = "Server error";
+      if (err.code === 'ECONNABORTED') {
+        errorMessage = "Request timed out. Please try again.";
+      } else if (err.response) {
+        errorMessage = err.response.data.message || `Server error: ${err.response.status}`;
+      } else if (err.request) {
+        errorMessage = "Network error. Please check your connection.";
+      } else {
+        errorMessage = err.message;
+      }
+      
+      setMessage("❌ " + errorMessage);
+      setMessageType("error");
+      setTimeout(() => setMessage(""), 5000);
+    } finally {
+      setIsLoading(false);
     }
 
     setValidated(true);
@@ -93,7 +157,7 @@ const RegisterForm = () => {
 
   return (
     <div className="registerform">
-      {/* ✅ Top Notification */}
+      {/* Top Notification */}
       {message && (
         <div
           className={`alert-box ${
@@ -119,7 +183,7 @@ const RegisterForm = () => {
           noValidate
           onSubmit={handleSubmit}
         >
-          {/* === Personal Info === */}
+          {/* Personal Info */}
           <h5 className="mb-3">Personal Information</h5>
           <div className="row mb-3">
             <div className="col-md-6">
@@ -190,26 +254,28 @@ const RegisterForm = () => {
               <label className="form-label">Mobile Number</label>
               <input
                 type="tel"
-                className="form-control"
+                className={`form-control ${errors.mobile ? 'is-invalid' : ''}`}
                 name="mobile"
                 pattern="[0-9]{10}"
                 required
                 onChange={handleChange}
               />
               <div className="invalid-feedback">
-                Enter a valid 10-digit mobile number
+                {errors.mobile || "Enter a valid 10-digit mobile number"}
               </div>
             </div>
             <div className="col-md-6">
               <label className="form-label">Email ID</label>
               <input
                 type="email"
-                className="form-control"
+                className={`form-control ${errors.email ? 'is-invalid' : ''}`}
                 name="email"
                 required
                 onChange={handleChange}
               />
-              <div className="invalid-feedback">Enter a valid email</div>
+              <div className="invalid-feedback">
+                {errors.email || "Enter a valid email"}
+              </div>
             </div>
           </div>
 
@@ -225,7 +291,7 @@ const RegisterForm = () => {
             <div className="invalid-feedback">Address is required</div>
           </div>
 
-          {/* === Professional Details === */}
+          {/* Professional Details */}
           <h5 className="mb-3">Professional Details</h5>
           <div className="mb-3">
             <label className="form-label">Institution/Organization</label>
@@ -261,7 +327,7 @@ const RegisterForm = () => {
             <div className="invalid-feedback">Department is required</div>
           </div>
 
-          {/* === Payment Details === */}
+          {/* Payment Details */}
           <h5 className="mb-3">Registration & Payment</h5>
           <div className="mb-3">
             <label className="form-label">Participant Category</label>
@@ -317,15 +383,17 @@ const RegisterForm = () => {
             <label className="form-label">Upload Receipt</label>
             <input
               type="file"
-              className="form-control"
+              className={`form-control ${errors.receipt ? 'is-invalid' : ''}`}
               name="receipt"
               required
               onChange={handleChange}
             />
-            <div className="invalid-feedback">Receipt upload is required</div>
+            <div className="invalid-feedback">
+              {errors.receipt || "Receipt upload is required"}
+            </div>
           </div>
 
-          {/* === Conference === */}
+          {/* Conference Participation */}
           <h5 className="mb-3">Conference Participation</h5>
           <div className="mb-3">
             <label className="form-label">Participation Category</label>
@@ -394,15 +462,17 @@ const RegisterForm = () => {
             <label className="form-label">Abstract Upload</label>
             <input
               type="file"
-              className="form-control"
+              className={`form-control ${errors.abstractFile ? 'is-invalid' : ''}`}
               name="abstractFile"
               required
               onChange={handleChange}
             />
-            <div className="invalid-feedback">Abstract file required</div>
+            <div className="invalid-feedback">
+              {errors.abstractFile || "Abstract file required"}
+            </div>
           </div>
 
-          {/* === Declaration === */}
+          {/* Declaration */}
           <h5 className="mb-3">Declaration</h5>
           <div className="form-check mb-3">
             <input
@@ -422,8 +492,19 @@ const RegisterForm = () => {
           </div>
 
           <div className="d-flex justify-content-end mt-4">
-            <button type="submit" className="btn btn-success custom-btn">
-              Submit Registration
+            <button 
+              type="submit" 
+              className="btn btn-success custom-btn"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                  Submitting...
+                </>
+              ) : (
+                "Submit Registration"
+              )}
             </button>
           </div>
         </form>
