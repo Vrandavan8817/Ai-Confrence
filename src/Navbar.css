@@ -5,7 +5,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 50;
+  z-index: 1000;
   background: rgba(0, 0, 0, 0.7);
   background-image: linear-gradient(180deg, rgba(0,0,0,0.7) 10%, transparent);
   display: flex;
@@ -32,7 +32,7 @@
   letter-spacing: 1px;
 }
 
-/* Nav Links */
+/* Links Desktop */
 .nav-links {
   display: flex;
   gap: 30px;
@@ -69,41 +69,49 @@
   color: #0d6efd;
 }
 
-/* Hamburger Toggle */
+/* Hamburger Button */
 .nav-toggle {
   display: none;
   background: none;
   border: none;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   color: #e5e5e5;
   cursor: pointer;
-  z-index: 100;
+  z-index: 1100;
 }
 
-/* Mobile View */
+/* ========== Mobile Styles ========== */
 @media screen and (max-width: 991px) {
   .nav-toggle {
     display: block;
   }
 
-  .nav-links {
-    position: absolute;
-    top: 80px;
-    right: 0;
-    background: rgba(0, 0, 0, 0.9);
-    flex-direction: column;
-    width: 220px;
-    max-height: 0;
-    overflow: hidden;
-    gap: 20px;
-    padding: 0;
-    text-align: right;
-    transition: max-height 0.4s ease-in-out, padding 0.3s ease-in-out;
+  /* Overlay background */
+  .nav-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+    transition: right 0.4s ease-in-out;
+    display: flex;
+    justify-content: center;
+    padding-top: 80px;
+    overflow-y: auto; /* Scroll if items exceed screen */
   }
 
-  .nav-links.open {
-   max-height: 1000px;
-    padding: 20px;
+  .nav-overlay.open {
+    right: 0;
+  }
+
+  /* Links inside overlay */
+  .nav-links {
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    text-align: center;
   }
 
   .nav-links li {
@@ -111,6 +119,7 @@
   }
 
   .nav-links li a {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    display: block;
   }
 }

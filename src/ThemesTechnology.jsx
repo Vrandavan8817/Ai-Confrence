@@ -35,7 +35,7 @@ function InfoCard({ imgSrc, title, details }) {
 
 export default function ThemesTechnology() {
   return (
-    <div className="themestechnology p-4">
+    <div className="themestechnology p-4" id="speakers">
       <div className="themescard">
         <h1 className="text-center p-3 mb-4">𝐓𝐡𝐞𝐦𝐞𝐬 & 𝐓𝐞𝐜𝐡𝐧𝐨𝐥𝐨𝐠𝐢𝐞𝐬</h1>
 

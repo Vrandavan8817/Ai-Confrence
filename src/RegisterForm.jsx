@@ -47,95 +47,102 @@ const RegisterForm = () => {
       newErrors.mobile = "Please enter a valid 10-digit mobile number";
     }
     
-    // File size validation (2MB for receipt, 5MB for abstract)
-    if (formData.receipt && formData.receipt.size > 2 * 1024 * 1024) {
-      newErrors.receipt = "Receipt file size must be less than 2MB";
-    }
-    
-    if (formData.abstractFile && formData.abstractFile.size > 5 * 1024 * 1024) {
-      newErrors.abstractFile = "Abstract file size must be less than 5MB";
-    }
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+   // File size validation (1MB for receipt, 2MB for abstract)
+if (formData.receipt && formData.receipt.size > 1 * 1024 * 1024) {
+  newErrors.receipt = "Receipt file size must be less than 1MB";
+}
+
+if (formData.abstractFile && formData.abstractFile.size > 2 * 1024 * 1024) {
+  newErrors.abstractFile = "Abstract file size must be less than 2MB";
+}
+
+setErrors(newErrors);
+return Object.keys(newErrors).length === 0;
+  }
 
   // Submit form
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const form = e.currentTarget;
+    setIsLoading(true);
 
-    if (form.checkValidity() === false) {
-      e.stopPropagation();
+    // run client-side validation
+    if (!validateForm()) {
+      setIsLoading(false);
       setValidated(true);
       return;
     }
 
-    // Custom validation
-    if (!validateForm()) {
-      setMessage("❌ Please fix the errors in the form");
+    // ensure both files present
+    if (!formData.receipt || !formData.abstractFile) {
+      setMessage("❌ Please attach both receipt and abstract files");
       setMessageType("error");
-      setTimeout(() => setMessage(""), 5000);
+      setIsLoading(false);
+      setTimeout(() => setMessage(""), 4000);
+      setValidated(true);
       return;
     }
 
-    setIsLoading(true);
-    
     try {
-      const data = new FormData();
+      const fd = new FormData();
+      fd.append("fullName", formData.fullName || "");
+      fd.append("email", formData.email || "");
+      fd.append("gender", formData.gender || "");
+      fd.append("dob", formData.dob || "");
+      fd.append("nationality", formData.nationality || "");
+      fd.append("mobile", formData.mobile || "");
+      fd.append("address", formData.address || "");
+      fd.append("institution", formData.institution || "");
+      fd.append("designation", formData.designation || "");
+      fd.append("department", formData.department || "");
+      fd.append("category", formData.category || "");
+      fd.append("fee", formData.fee || "");
+      fd.append("paymentRef", formData.paymentRef || "");
+      fd.append("participation", formData.participation || "");
+      fd.append("submissionTitle", formData.submissionTitle || "");
+      fd.append("authors", formData.authors || "");
+      fd.append("abstractText", formData.abstractText || "");
 
-      // Append fields one by one (exact names backend expects)
-      data.append("fullName", formData.fullName || "");
-      data.append("gender", formData.gender || "");
-      data.append("dob", formData.dob || "");
-      data.append("nationality", formData.nationality || "");
-      data.append("mobile", formData.mobile || "");
-      data.append("email", formData.email || "");
-      data.append("address", formData.address || "");
-      data.append("institution", formData.institution || "");
-      data.append("designation", formData.designation || "");
-      data.append("department", formData.department || "");
-      data.append("category", formData.category || "");
-      data.append("fee", formData.fee || "");
-      data.append("paymentRef", formData.paymentRef || "");
-      data.append("participation", formData.participation || "");
-      data.append("submissionTitle", formData.submissionTitle || "");
-      data.append("authors", formData.authors || "");
-      data.append("abstractText", formData.abstractText || "");
+      // append files using the keys stored by handleChange
+      fd.append("receipt", formData.receipt);        // must be File
+      fd.append("abstractFile", formData.abstractFile); // must be File
 
-      // Files
-      if (formData.receipt) data.append("receipt", formData.receipt);
-      if (formData.abstractFile) data.append("abstractFile", formData.abstractFile);
-
-      // Checkbox (must be "true"/"false")
-      data.append("declaration", formData.declaration ? "true" : "false");
-
-      // Axios Request with timeout
-      const res = await axios.post(API_URL, data, {
-        headers: { "Content-Type": "multipart/form-data" },
-        timeout: 120000, // 30 seconds timeout
+      console.log("🚀 Starting upload to:", API_URL);
+      const res = await axios.post(API_URL, fd, {
+        headers: { Accept: "application/json" },
+        timeout: 60000,
+        onUploadProgress: (p) => {
+          const percent = Math.round((p.loaded * 100) / p.total);
+          console.log(`📤 Upload ${percent}% (${p.loaded}/${p.total} bytes)`);
+        }
       });
+
+      console.log("✅ Server response:", res.data);
 
       if (res.data.success) {
         setMessage("✅ Registration successful!");
         setMessageType("success");
 
-        // Reset form
+        // Reset form state and DOM form
         setFormData({});
-        form.reset();
+        e.target.reset();
         setValidated(false);
       } else {
         setMessage("❌ " + (res.data.message || "Registration failed"));
         setMessageType("error");
       }
 
-      setTimeout(() => setMessage(""), 5000); // Auto-hide after 5 sec
+      setTimeout(() => setMessage(""), 4000);
     } catch (err) {
-      console.error("❌ Error Response:", err.response?.data || err.message);
-      
-      // Handle different error types
+      console.error("❌ Error details:", {
+        message: err.message,
+        code: err.code,
+        status: err.response?.status,
+        data: err.response?.data,
+        isTimeout: err.code === 'ECONNABORTED'
+      });
+
       let errorMessage = "Server error";
-      if (err.code === 'ECONNABORTED') {
+      if (err.code === "ECONNABORTED") {
         errorMessage = "Request timed out. Please try again.";
       } else if (err.response) {
         errorMessage = err.response.data.message || `Server error: ${err.response.status}`;
@@ -144,15 +151,14 @@ const RegisterForm = () => {
       } else {
         errorMessage = err.message;
       }
-      
+
       setMessage("❌ " + errorMessage);
       setMessageType("error");
       setTimeout(() => setMessage(""), 5000);
     } finally {
       setIsLoading(false);
+      setValidated(true);
     }
-
-    setValidated(true);
   };
 
   return (
@@ -193,6 +199,7 @@ const RegisterForm = () => {
                 className="form-control"
                 name="fullName"
                 required
+                value={formData.fullName || ""}
                 onChange={handleChange}
               />
               <div className="invalid-feedback">Full Name is required</div>
