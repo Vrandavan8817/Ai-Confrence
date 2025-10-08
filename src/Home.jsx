@@ -6,7 +6,7 @@ function Home() {
     <div className="home" id="home">
       <video
         className="home-video"
-        // autoPlay
+        autoPlay
         loop
         muted
         playsInline
