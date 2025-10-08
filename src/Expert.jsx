@@ -1,47 +1,6 @@
-// import React from "react";
-// import "./SponSorship.css";
-
-// function SponSorship() {
-//   return (
-//     <div className="sponsorship" id="sponsorship">
-//       <h1 className="p-5" >EXPERTS</h1>
-//       <div className=" sponcard">
-//         <div class="col">
-//           <div class="card h-100">
-//             <img src="#" className="card-img-top" />
-//             <div class="card-body">
-//               <h5 class="card-title">Card title</h5>
-//             </div>
-//           </div>
-//         </div>
-//         <div class="col">
-//           <div class="card h-100">
-//             <img src="/media/images/comeetees.jpg" className="card-img-top" />
-//             <div class="card-body">
-//               <h5 class="card-title">Card title</h5>
-//             </div>
-//           </div>
-//         </div>
-//         <div class="col">
-//           <div class="card h-100">
-//             <img src="/media/images/comeetees.jpg" className="card-img-top" />
-//             <div class="card-body">
-//               <h5 class="card-title">Card title</h5>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default SponSorship;
-
-
-
 
 import React from "react";
-import "./SponSorship.css";
+import "./Expert.css";
 
 const experts = [
   {
@@ -130,11 +89,11 @@ const experts = [
 
 export default function App() {
   return (
-    <div className="team-wrapper sponsorship border-top" id="sponsorship">
+    <div className="team-wrapper sponsorship border-top" id="expert">
       <div className="team-header">
         <div className="team-icon">👥</div>
         <h1>
-          Meet Our <span>Expert Team</span>
+          Invited <span>Speakers</span>
         </h1>
         <p>
           Industry pioneers and thought leaders who bring unparalleled expertise
@@ -151,14 +110,6 @@ export default function App() {
             <h2>{expert.name}</h2>
             <h3>{expert.title}</h3>
             <p className="company">{expert.company}</p>
-            {/* <div className="rating">
-              ⭐ {expert.rating} <span>• {expert.projects} projects</span>
-            </div>
-            <div className="tags">
-              {expert.expertise.map((tag, i) => (
-                <span key={i}>{tag}</span>
-              ))}
-            </div> */}
           </div>
         ))}
       </div>

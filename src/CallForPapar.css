@@ -21,7 +21,8 @@
 /* ---------- Hero ---------- */
 .hero-hero {
   position: relative;
-  background: #003262;
+  /* background: #003262; */
+  background: rgb(10, 20, 45);
   color: #fff;
   padding: 56px 0 64px;
   overflow: hidden;
@@ -53,7 +54,7 @@
 } */
 
 .hero-title {
-  font-size: 72px;
+  font-size: 50px;
   line-height: 1;
   margin: 18px 0 6px;
   font-weight: 800;

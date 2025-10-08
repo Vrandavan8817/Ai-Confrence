@@ -123,3 +123,11 @@
     display: block;
   }
 }
+
+
+
+.logo{
+  width: 160px;
+  height: 40px;
+  margin-right: 30px;
+}

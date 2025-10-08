@@ -22,11 +22,17 @@ export default function CallForPapers() {
         <div className="hero-inner container text-center">
           <h1 className="hero-title">CALL FOR PAPERS</h1>
 
-          <h1 className="hero-title">ICAI 2026</h1>
-
-          <p className="hero-sub">
-            International Conference on Artificial Intelligence
-          </p>
+          <h1 className="hero-title mt-4" style={{color:"rgb(0,220,255)"}}>INTERNATIONAL CONFERENCE</h1>
+          <h1 className="hero-title">ON</h1>
+          <h1 className="hero-title" style={{color:"rgb(0,220,255)"}}>ARTIFICIAL INTELLIGENCE</h1>
+           
+          <h1 className="hero-sub mt-4">
+             VIKSIT BHARAT 2047 [ICAI-VB 2026]
+          </h1>
+          <h1 className="hero-sub">
+            Artificial Intelligence for a Smarter, Sustainable, and Inclusive Future
+          </h1>
+          
 
           <div className="hero-meta d-flex justify-content-center gap-4 text-white-75 align-items-center mt-2">
             <span>• 13–14 March 2026</span>

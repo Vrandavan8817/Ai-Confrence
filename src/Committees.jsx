@@ -11,7 +11,7 @@ function Committees() {
             alt="Santosh Choubey"
           />
           <div className="card-body">
-            <strong>Patron</strong>
+            <strong>Chief Patron</strong>
             <br />
             <strong>𝗦𝗵𝗿𝗶 𝗦𝗮𝗻𝘁𝗼𝘀𝗵 𝗖𝗵𝗼𝘂𝗯𝗲𝘆</strong>
             <br />
@@ -22,7 +22,7 @@ function Committees() {
         <div className="committee-card">
           <img src="/media/images/siddharth1.jpg" alt="Siddharth Chaturvedi" />
           <div className="card-body">
-            <strong>Chief Patron</strong>
+            <strong>Patron</strong>
             <br />
             <strong>𝗗𝗿 𝗦𝗶𝗱𝗱𝗵𝗮𝗿𝘁𝗵 𝗖𝗵𝗮𝘁𝘂𝗿𝘃𝗲𝗱𝗶</strong>
             <br />
@@ -33,7 +33,7 @@ function Committees() {
         <div className="committee-card">
           <img src="/media/images/aditi.jpg" alt="Aditi Chaturvedi Vats" />
           <div className="card-body">
-            <strong>Chief Patron</strong>
+            <strong>Patron</strong>
             <br />
             <strong>𝗗𝗿 𝗔𝗱𝗶𝘁𝗶 𝗖𝗵𝗮𝘁𝘂𝗿𝘃𝗲𝗱𝗶 𝗩𝗮𝘁𝘀</strong>
             <br />
@@ -64,7 +64,7 @@ function Committees() {
 
       <div className="committee-row">
         <div className="committee-card">
-          <img src="/media/images/comeetees.jpg" alt="Ashii Dixit" />
+          <img src="/media/images/aashi2.jpg" alt="Ashii Dixit" />
           <div className="card-body">
             <strong>𝗗𝗿 𝗔𝘀𝗵𝗶𝗶 𝗗𝗶𝘅𝗶𝘁</strong>
             <br />

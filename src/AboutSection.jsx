@@ -7,23 +7,14 @@ function AboutSection() {
       <div className="row align-items-center">
         {/* Left Column (Text) */}
         <div className="col-lg-6 col-md-12 about-text">
-          <h1>ABOUT SUMMIT'25</h1>
+        
+          <h1>ABOUT ORGANISATION</h1>
           <p>
-            The conference aims to provide a platform for academicians, researchers,
-            industry professionals, and policymakers to discuss AI applications across
-            diverse fields, encouraging knowledge exchange and innovation. It will
-            showcase emerging research, tools, and technologies in AI, highlighting the
-            latest advancements shaping intelligent systems.
+            SCOPE Global Skills University (SGSU), established in 2023 as Central India’s first skills university, is accredited under UGC 2(f) and promoted by the AISECT Group, a pioneer in education and skill development for four decades. Recognized among India’s top skills universities, SGSU emphasizes practical exposure through internships and apprenticeships. It offers UG, PG, and doctoral programs across diverse fields including technology, management, healthcare, agriculture, design, media, and sustainable development.
           </p>
+          <h1>ABOUT CONFERENCE'26</h1>
           <p>
-            By fostering collaborations between academia, industry, and government
-            agencies, the event seeks to transform cutting-edge research into practical
-            solutions for real-world challenges. Additionally, it creates opportunities
-            for students and researchers to publish and present their work, gaining
-            valuable exposure and feedback. Through dialogue, demonstrations, and
-            networking, the conference promotes innovation, supports the next generation
-            of AI professionals, and strengthens the global AI ecosystem across sectors
-            such as healthcare, education, manufacturing, and governance.
+           The conference provides a platform for academicians, researchers, industry professionals, and policymakers to explore AI applications across fields, showcasing emerging research, tools, and technologies shaping intelligent systems. By fostering collaboration among academia, industry, and government, it translates research into real-world solutions. It also enables students and researchers to publish, present, and network, driving innovation and strengthening the global AI ecosystem in healthcare, education, manufacturing, and governance.
           </p>
         </div>
 

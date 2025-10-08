@@ -7,7 +7,8 @@ function Navbar() {
   return (
     <header className="navbar-clone">
       <nav className="navbar">
-        <a href="#home" className="logo">SUMMIT'25</a>
+        {/* <a href="#home" className="logo">AI CONFERENCE 2026</a> */}
+        <img src="/media/images/logo.jpg" className="logo" />
 
         {/* Nav Links */}
         <div className={`nav-overlay ${isOpen ? "open" : ""}`}>
@@ -16,7 +17,7 @@ function Navbar() {
             <li><a href="#aboutSection" onClick={() => setIsOpen(false)}>About Us</a></li>
             <li><a href="#callforpaper" onClick={() => setIsOpen(false)}>Call For Paper</a></li>
             <li><a href="#committees" onClick={() => setIsOpen(false)}>Committees</a></li>
-            <li><a href="#sponsorship" onClick={() => setIsOpen(false)}>Experts</a></li>
+            <li><a href="#expert" onClick={() => setIsOpen(false)}>Experts</a></li>
             <li><a href="#speakers" onClick={() => setIsOpen(false)}>Themes & Technology</a></li>
             {/* <li><a href="#awardsgrants" onClick={() => setIsOpen(false)}>Awards Grants</a></li> */}
             <li><a href="#schedule" onClick={() => setIsOpen(false)}>Schedule</a></li>

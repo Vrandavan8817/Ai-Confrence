@@ -23,7 +23,7 @@ function Schedule() {
   return (
     <section className="schedule" id="schedule">
       <div className="container">
-        <h1 className="schedule-title">SCHEDULE</h1>
+        <h1 className="schedule-title">TENTATIVE SCHEDULE</h1>
         <p className="subtitle">
           Click for the full schedule of events at The AI
           Conference 2025. <br />
@@ -40,17 +40,17 @@ function Schedule() {
         <div className="agenda-columns">
           {/* Column 1 */}
           <div className="agenda-column">
-            <h2>17th SEPTEMBER WEDNESDAY 2026</h2>
+            <h2>26th MARCH THURSDAY 2026</h2>
             {[
               ["09:00 AM", "Registration & Welcome Kit Distribution"],
-              ["09:30 AM", "Inaugural Ceremony (Lamp Lighting, Welcome Address)"],
+              ["09:30 AM", "Inaugural Ceremony"],
               ["10:00 AM", "Conference Overview & Theme Introduction"],
-              ["10:15 AM", "Address by Chief Guest (Policy Leader/VC)"],
+              ["10:15 AM", "Address by Chief Guest"],
               ["10:30 AM", "Vote of Thanks"],
               ["10:40 AM", "Tea / Networking Break", true],
-              ["11:00 AM", "Keynote 1 (International Speaker – Virtual/Physical)"],
-              ["11:45 AM", "Keynote 2 (Eminent Indian Researcher – IIT/IISc)"],
-              ["12:30 PM", "Plenary Talk (Industry Leader – NASSCOM/Infosys/TCS/IBM/Google)"],
+              ["11:00 AM", "Keynote Speaker 1"],
+              ["11:45 AM", "Keynote Speaker 2"],
+              ["12:30 PM", "Plenary Talk"],
               ["01:15 PM", "Lunch Break", true],
               ["02:15 PM", "Technical Session 1 (AI in Healthcare / AgriTech) – 6 Papers"],
               ["03:45 PM", "Tea / High Tea Break", true],
@@ -70,11 +70,11 @@ function Schedule() {
 
           {/* Column 2 */}
           <div className="agenda-column">
-            <h2>18th SEPTEMBER THURSDAY 2026</h2>
+            <h2>27th MARCH FRIDAY 2026</h2>
             {[
               ["09:00 AM", "Recap of Day 1 & Announcements"],
-              ["09:15 AM", "Keynote 3 (Asian Expert – NUS/NTU/Tokyo)"],
-              ["10:00 AM", "Keynote 4 (Applied AI – Microsoft India / Google Research)"],
+              ["09:15 AM", "Keynote Speaker 3 "],
+              ["10:00 AM", "Keynote Speaker 4 "],
               ["10:45 AM", "Tea Break", true],
               ["11:00 AM", "Technical Session 2 (AI in Education, Finance, Cybersecurity) – 8 Papers"],
               ["12:30 PM", "Lunch Break", true],
@@ -83,7 +83,7 @@ function Schedule() {
               ["03:15 PM", "Workshop / Demo (AI Startups / Hackathon Showcase)"],
               ["04:00 PM", "Roundtable: “AI Policy, Ethics & Regulation”"],
               ["04:45 PM", "Poster Session & Jury Evaluation"],
-              ["05:30 PM", "Valedictory Address (Govt. Official)"],
+              ["05:30 PM", "Valedictory Address"],
               ["06:00 PM", "Best Paper & Poster Awards"],
               ["06:30 PM", "Vote of Thanks & National Anthem"],
               ["06:45 PM", "Farewell High Tea & Departure", true],
