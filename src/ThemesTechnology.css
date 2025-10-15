@@ -1,0 +1,122 @@
+/* Card wrapper */
+.theme-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  max-width: 350px;   /* ✅ card width */
+  height: 350px;      /* ✅ fixed height */
+  background: #000;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  margin: auto;
+  display: block;
+}
+
+.theme-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+/* Full-cover image */
+.theme-card-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Bottom-anchored text area */
+.theme-card-body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  padding: 15px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.3));
+  color: #fff;
+  max-height: 130px;
+  transition: max-height 0.4s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Expand body on show */
+.theme-card.show .theme-card-body {
+  max-height: 100%;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* Title */
+.h5-head {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-align: center;
+  color: #fff;
+}
+
+/* Extra info list */
+.extra-info {
+  margin-top: 8px;
+  overflow-y: auto;
+  max-height: 160px;
+  padding-right: 4px;
+}
+
+.extra-info ul {
+  padding-left: 1.2rem;
+  margin: 0;
+  list-style-type: disc;
+}
+
+.extra-info li {
+  font-size: 0.9rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.3;
+}
+
+/* More/Hide link */
+.more-link {
+  background: none;
+  border: none;
+  color: #ffd166;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  margin-top: 10px;
+  align-self: flex-start;
+  padding: 0;
+}
+
+/* Themes container */
+.themescard {
+  margin: auto;
+  max-width: 1000px;
+}
+
+/* ✅ Row spacing */
+.custom-row {
+ 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* ek line me 2 cards */
+  column-gap: 10px; /* cards ke beech horizontal gap */
+  row-gap: 70px;    /* rows ke beech vertical gap */
+  justify-items: center;
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .custom-row {
+    grid-template-columns: 1fr; /* 1 card per row on mobile */
+    gap: 20px;
+  }
+  .theme-card {
+    max-width: 100%;
+    height: 300px;
+  }
+}

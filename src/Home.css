@@ -1,0 +1,93 @@
+.home {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full screen height */
+  margin-top: 80px; /* To adjust for navbar */
+  overflow: hidden;
+}
+
+/* .home-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+} */
+
+/* Optional dark overlay */
+/* .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+  z-index: 2;
+} */
+
+/* Example content styling */
+.home-content {
+  position: relative;
+  z-index: 3;
+  color: white;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.home-content h1 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.home-content p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+/* ----------- Responsive ----------- */
+@media (max-width: 992px) {
+  .home {
+    height: 80vh;
+  }
+  .home-content h1 {
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    height: 70vh;
+  }
+  .home-content h1 {
+    font-size: 1.8rem;
+  }
+  .home-content p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .home {
+    height: 60vh;
+    margin-top: 60px;
+  }
+  .home-content h1 {
+    font-size: 1.5rem;
+  }
+  .home-content p {
+    font-size: 0.9rem;
+  }
+}
+  .home-logo{
+    width: 100%;
+    height: 100%;
+    height: auto;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }

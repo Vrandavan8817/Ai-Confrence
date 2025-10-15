@@ -1,0 +1,149 @@
+.registerform {
+  width: 100%;
+  background-color: #F0F8FF;
+  border: 2px solid black;
+  margin-top: 20px;
+  padding: 30px 15px;
+}
+
+/* Form Card */
+.form-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 25px;
+  transition: all 0.3s ease;
+}
+
+.form-card:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Buttons */
+.custom-btn {
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  font-weight: 500;
+  padding: 8px 20px;
+}
+
+.custom-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* Input Fields */
+.form-control,
+textarea,
+select {
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  transition: all 0.3s ease-in-out;
+  font-size: 0.95rem;
+}
+
+/* Glow + Pop on hover when empty */
+.form-control:placeholder-shown:hover,
+textarea:placeholder-shown:hover {
+  border-color: #0d6efd;
+  box-shadow: 0 0 14px rgba(13, 110, 253, 0.6);
+  transform: scale(1.02);
+}
+
+/* Focused input */
+.form-control:focus,
+textarea:focus,
+select:focus {
+  border-color: #0d6efd;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.7);
+  transform: scale(1.02);
+}
+
+/* File Upload */
+input[type="file"].form-control {
+  padding: 8px;
+  cursor: pointer;
+}
+
+input[type="file"].form-control:hover {
+  border-color: #0d6efd;
+  box-shadow: 0 0 10px rgba(13, 110, 253, 0.6);
+}
+
+/* Section Headings */
+h5 {
+  font-weight: 600;
+  color: #0d6efd;
+  margin-bottom: 15px;
+}
+
+/* Declaration Box */
+.alert {
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+}
+
+/* ✅ Notification Box */
+.alert-box {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 14px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  z-index: 9999;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 768px) {
+  .registerform {
+    padding: 20px 10px;
+  }
+  .row .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+  textarea,
+  .form-control,
+  select {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .registerform {
+    margin-top: 15px;
+  }
+  h2 {
+    font-size: 1.4rem;
+  }
+  p {
+    font-size: 0.9rem;
+  }
+  .custom-btn {
+    padding: 6px 14px;
+    font-size: 0.85rem;
+  }
+}
