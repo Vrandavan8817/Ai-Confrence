@@ -38,7 +38,7 @@ const experts = [
    name: "Name",
     title: "UX Design Lead",
     company: "Design Innovations",
-   image: "/public/media/images/comeetees.jpg",
+   image: "/media/images/comeetees.jpg",
     // expertise: ["UX Design", "Research", "Strategy"],
     // rating: 4.7,
     // projects: 98

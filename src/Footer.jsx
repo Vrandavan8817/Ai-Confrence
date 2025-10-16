@@ -39,7 +39,7 @@ function Footer() {
         <div className="footer-section contact">
           <h3>Contact Us</h3>
           <p>Email: <a href="mailto:info@aiconf.com">info@sgsuniversity.ac.in</a></p>
-          <p>Phone: <a href="tel:+1234567890">+1 234 567 890</a></p>
+          <p>Phone: <a href="tel:+1234567890">+91 7000349896</a></p>
           <p>Address: SGSU Campus, NH-12, Narmadapuram Rd, near Misrod, Misrod, Bhopal, Bhairopur, Madhya Pradesh 462047</p>
         </div>
 
