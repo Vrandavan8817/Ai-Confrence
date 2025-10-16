@@ -8,7 +8,7 @@ const experts = [
    name: "Name",
     title: "AI Research Director",
     company: "TechCorp Analytics",
-    image: "/public/media/images/comeetees.jpg",
+    image: "/media/images/comeetees.jpg",
     // expertise: ["AI", "ML", "Data Science"],
     // rating: 4.9,
     // projects: 127
@@ -18,7 +18,7 @@ const experts = [
    name: "Name",
     title: "Cloud Architect",
     company: "CloudTech Solutions",
-    image: "/public/media/images/comeetees.jpg",
+    image: "/media/images/comeetees.jpg",
     // expertise: ["AWS", "DevOps", "Security"],
     // rating: 4.8,
     // projects: 89
@@ -28,7 +28,7 @@ const experts = [
     name: "Name",
     title: "Security Expert",
     company: "SecureNet Industries",
-    image: "/public/media/images/comeetees.jpg",
+    image: "/media/images/comeetees.jpg",
     // expertise: ["Cybersecurity", "Compliance", "Risk"],
     // rating: 5.0,
     // projects: 156
@@ -48,7 +48,7 @@ const experts = [
     name: "Name",
     title: "Data Scientist",
     company: "Analytics Pro",
-    image: "/public/media/images/comeetees.jpg",
+    image: "/media/images/comeetees.jpg",
     // expertise: ["Analytics", "Python", "Statistics"],
     // rating: 4.9,
     // projects: 73
@@ -58,7 +58,7 @@ const experts = [
     name: "Name",
     title: "Blockchain Engineer",
     company: "Crypto Solutions",
-    image: "/public/media/images/comeetees.jpg",
+    image: "/media/images/comeetees.jpg",
     // expertise: ["Blockchain", "Smart Contracts", "FinTech"],
     // rating: 4.8,
     // projects: 61
@@ -69,7 +69,7 @@ const experts = [
     name: "Name",
     title: "Blockchain Engineer",
     company: "Crypto Solutions",
-    image: "/public/media/images/comeetees.jpg",
+    image: "/media/images/comeetees.jpg",
     // expertise: ["Blockchain", "Smart Contracts", "FinTech"],
     // rating: 4.8,
     // projects: 61
@@ -80,7 +80,7 @@ const experts = [
     name: "Name",
     title: "Blockchain Engineer",
     company: "Crypto Solutions",
-    image: "/public/media/images/comeetees.jpg",
+    image: "/media/images/comeetees.jpg",
     // expertise: ["Blockchain", "Smart Contracts", "FinTech"],
     // rating: 4.8,
     // projects: 61
